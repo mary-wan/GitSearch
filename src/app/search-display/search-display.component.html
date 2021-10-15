@@ -1,1 +1,13 @@
-<p>search-display works!</p>
+<div class="container-fluid mt-3">
+    <button class="btn btn-success" (click)= "back()"><i class="fa fa-arrow-left"></i> BACK</button>
+  <div class="row">
+    <div class="card col-lg-4 m-2" style="width: 18rem;">
+      <img class="card-img-top" src="{{user.avatar_url}}" alt="Card image cap" height="200">
+      <div class="card-body">
+        <h5 class="card-title">{{user.login}}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">Info</h6>
+        <a href="{{user. html_url}}">View in github</a>
+      </div>
+    </div>
+  </div>
+</div>

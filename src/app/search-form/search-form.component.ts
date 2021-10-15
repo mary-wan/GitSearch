@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-search-form',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchFormComponent implements OnInit {
 
-  constructor() { }
+  username = new FormControl('');
+  constructor(private router:Router) { }
 
   ngOnInit(): void {
+  }
+  getUserData(){
+
+  }
+  showUser(){
+    this.router.navigate(['display']);
   }
 
 }

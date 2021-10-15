@@ -8,6 +8,9 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { SearchFormComponent } from './search-form/search-form.component';
 import { SearchDisplayComponent } from './search-display/search-display.component';
 import { GitRoutingModule } from './git-routing.module';
+import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
+
 
 
 
@@ -23,7 +26,9 @@ import { GitRoutingModule } from './git-routing.module';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    GitRoutingModule
+    GitRoutingModule,
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
