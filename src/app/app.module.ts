@@ -10,6 +10,7 @@ import { SearchDisplayComponent } from './search-display/search-display.componen
 import { GitRoutingModule } from './git-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { DateCountPipe } from './date-count.pipe';
 
 
 
@@ -20,6 +21,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     NavbarComponent,
     SearchFormComponent,
     SearchDisplayComponent,
+    DateCountPipe,
 
   ],
   imports: [
