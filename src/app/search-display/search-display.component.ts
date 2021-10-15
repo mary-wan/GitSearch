@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from './../user';
+import { Repo } from '../repo';
 import { UserService } from '../services/user.service';
 import { Router } from '@angular/router';
 
@@ -11,13 +12,18 @@ import { Router } from '@angular/router';
 })
 export class SearchDisplayComponent implements OnInit {
   user!: any;
+  repository:any=[]
+  // repository!:any
   constructor(private userService:UserService,private router:Router) { }
 
   ngOnInit(): void {
     this.userService.getUserData().then((users)=>{
       console.log("..........",users);
       this.user = users
-      
+    })
+    this.userService.getRepo().then((repository)=>{
+      this.repository = repository
+      console.log(">>>>>>>>>>>",repository);
     })
   }
   back(){

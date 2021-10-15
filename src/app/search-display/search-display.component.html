@@ -1,13 +1,23 @@
-<div class="container-fluid mt-3">
-    <button class="btn btn-success" (click)= "back()"><i class="fa fa-arrow-left"></i> BACK</button>
+<div class="container mt-3">
   <div class="row">
-    <div class="card col-lg-4 m-2" style="width: 18rem;">
-      <img class="card-img-top" src="{{user.avatar_url}}" alt="Card image cap" height="200">
-      <div class="card-body">
-        <h5 class="card-title">{{user.login}}</h5>
-        <h6 class="card-subtitle mb-2 text-muted">Info</h6>
-        <a href="{{user. html_url}}">View in github</a>
+    <div class="fixed">
+      <div class="card col-lg-4 m-2" style="width: 18rem;">
+        <img class="card-img-top" src="{{user.avatar_url}}" alt="Card image cap" height="200">
+        <div class="card-body">
+          <h5 class="card-title">{{user.login}}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">Info</h6>
+          <p>Public repositories: {{user.public_repos}}</p>
+          <a href="{{user. html_url}}">View in github</a>
+        </div>
+        <button class="btn btn-success" (click)="back()"><i class="fa fa-arrow-left"></i> BACK</button>
       </div>
+    </div>
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        <h1>REPOSITORIES</h1>
+      <ul *ngFor=" let repo of repository">
+        <li>{{repo.name}}</li>
+      </ul>
     </div>
   </div>
 </div>
