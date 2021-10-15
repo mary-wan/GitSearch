@@ -1,1 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.css";
+@import url('https://fonts.googleapis.com/css2?family=Aladin&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap');
+@import "~font-awesome/css/font-awesome.min.css";
+
+body {
+  background: #CFEED1 !important;
+  font-family: 'Lato', sans-serif;
+  overflow-x: none;
+  font-size: 15px;
+}
+
+h1 {
+  font-family: 'Aladin', cursive;
+}
