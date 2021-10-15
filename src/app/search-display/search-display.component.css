@@ -9,8 +9,16 @@
     color: white;
     width: 40%;
 }
-/* @media screen and (min-width: 1200px) {
+ul li{
+    list-style-type: none;
+    color: blue;
+    font-family: 'Ubuntu', sans-serif;
+    text-transform: uppercase;
+    font-size: 18px;
+    font-weight: 900;
+}
+@media screen and (min-width: 1200px) {
     .fixed{
         position: fixed;
     }
-  } */
+  }
