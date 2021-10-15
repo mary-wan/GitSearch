@@ -1,0 +1,22 @@
+form{
+    background-image: url("src/assets/form.jpg");
+    background-attachment: fixed;
+    background-size: cover;  
+    /* background-color: #CFEED1; */
+    border:  solid 2px;
+    border-radius: 10px;
+}
+input{
+    width: 100%;
+
+}
+.btn{
+    margin-left: 25%;
+    margin-bottom: 10px;
+    background-color: #4e1a3d !important;
+    color: white;
+    width: 50%;
+}
+.container{
+    padding: 0px;
+}
