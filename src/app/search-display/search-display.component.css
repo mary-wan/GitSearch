@@ -1,5 +1,5 @@
-.card{
-    height: fit-content;
+p{
+    margin: 0px !important;
 }
 .btn{
     margin-left: 10%;
@@ -11,14 +11,45 @@
 }
 ul li{
     list-style-type: none;
-    color: blue;
+    color: #1CAF9A;
     font-family: 'Ubuntu', sans-serif;
     text-transform: uppercase;
     font-size: 18px;
     font-weight: 900;
 }
+.fixed{
+    font-size: 15px;
+}
+.name{
+    margin: 0px !important;
+    padding-left: 60%;
+    font-family: 'Ubuntu', sans-serif;
+    color: #1CAF9A;
+    font-size: 18px;
+}
+a{
+    text-decoration: none;
+    border-color:#4e1a3d ;
+}
+a:hover{
+    text-decoration: underline;
+}
+img{
+    border: solid 2px;
+}
+.details{
+    margin-left: 2%;
+    font-family: 'Poiret One', cursive;
+    font-weight: 900;
+}
+span, a{
+    font-family: 'Lato', sans-serif;
+}
 @media screen and (min-width: 1200px) {
     .fixed{
         position: fixed;
+    }
+    .repos{
+        margin-left: 20%;
     }
   }

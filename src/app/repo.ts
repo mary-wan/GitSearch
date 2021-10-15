@@ -5,8 +5,7 @@ export class Repo {
         public name:string,
         public description:string,
         public language:string,
-        public created_at:Date,
-        public id:number
+        public created_at:Date
     ){
 
     }

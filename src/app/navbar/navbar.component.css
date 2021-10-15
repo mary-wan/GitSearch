@@ -14,3 +14,9 @@
 .icon{
     padding-right: 10px;
 }
+nav{
+    position: fixed;
+    top: 0%;
+    right: 0%;
+    left: 0%;
+}

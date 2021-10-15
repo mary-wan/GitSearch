@@ -4,8 +4,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap');
 @import "~font-awesome/css/font-awesome.min.css";
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poiret+One&display=swap');
+
 body {
-  background: #CFEED1 !important;
+  /* background: #CFEED1 !important; */
   font-family: 'Lato', sans-serif;
   overflow-x: none;
   font-size: 15px;
