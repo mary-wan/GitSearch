@@ -27,6 +27,7 @@ export class SearchFormComponent implements OnInit {
   getUsername(){
     console.log("=====",this.username);
     this.userService.getUserData(this.username);
+    this.userService.getRepo(this.username);
  
       this.router.navigate(['display']);
    

@@ -36,6 +36,7 @@ export class UserService {
     }
 
     let promise = new Promise<ApiResponse | void>((resolve,reject)=>{
+      // this.httpClient.get<any>(this.url + username + this.apiKey).toPromise()
       this.httpClient.get<any>(this.url + username + this.apiKey).toPromise()
       .then(response=>{
           
@@ -54,17 +55,41 @@ export class UserService {
         reject(error)
       })
        
-      this.httpClient.get<any>("https://api.github.com/users/mary-wan/repos" ).toPromise()
+      // this.httpClient.get<any>("https://api.github.com/users/mary-wan/repos" ).toPromise()
+      // .then(response=>{
+       
+       
+      //   for(let i=0; i<response.length; i++)
+	    //     	{
+	        	
+	    //     		this.UserInfo = new Repo(response[i].html_url,response[i].clone_url,response[i].name,response[i].description,response[i].created_at,response[i].updated_at,response[i].language);
+	    //     		this.repositories.push(this.UserInfo);
+	    //     	}
+      //       resolve()
+      // },
+      // error=>{
+      //  console.log(error.message);
+       
+
+      //   reject(error)
+      // })
+     
+    })
+    return promise;
+  }
+  getRepo(username:String){
+
+    let promise = new Promise<void>((resolve,reject)=>{
+      this.httpClient.get<any>("https://api.github.com/users/"+username+"/repos" ).toPromise()
       .then(response=>{
        
-       
-        for(let i=0; i<response.length; i++)
+        resolve()
+        for(var i=0; i<response.length; i++)
 	        	{
 	        	
-	        		this.UserInfo = new Repo(response[i].html_url,response[i].clone_url,response[i].name,response[i].description,response[i].created_at,response[i].updated_at,response[i].language);
+              this.UserInfo = new Repo(response[i].html_url,response[i].clone_url,response[i].name,response[i].description,response[i].created_at,response[i].updated_at,response[i].language);
 	        		this.repositories.push(this.UserInfo);
 	        	}
-            resolve()
       },
       error=>{
        console.log(error.message);
@@ -76,29 +101,5 @@ export class UserService {
     })
     return promise;
   }
-  // getRepo(username:String){
-
-  //   let promise = new Promise<void>((resolve,reject)=>{
-  //     this.httpClient.get<any>("https://api.github.com/users/"+this.username+"/repos" ).toPromise()
-  //     .then(response=>{
-       
-  //       resolve()
-  //       for(var i=0; i<response.length; i++)
-	//         	{
-	        	
-	//         		this.newUserData = new Repo(response[i].html_url,response[i].clone_url,response[i].name,response[i].description,response[i].created_at,response[i].updated_at,response[i].language);
-	//         		this.repositories.push(this.newUserData);
-	//         	}
-  //     },
-  //     error=>{
-  //      console.log(error.message);
-       
-
-  //       reject(error)
-  //     })
-     
-  //   })
-  //   return promise;
-  // }
   
 }
