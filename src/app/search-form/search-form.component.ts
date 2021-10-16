@@ -1,8 +1,9 @@
+import { User } from './../user';
 import { UserService } from './../services/user.service';
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormControl , FormGroup} from '@angular/forms';
 import { Router } from '@angular/router';
-import { Validators } from '@angular/forms';
+
 
 @Component({
   selector: 'app-search-form',
@@ -11,23 +12,37 @@ import { Validators } from '@angular/forms';
 })
 export class SearchFormComponent implements OnInit {
 
-  username = new FormControl('');
+  // gitForm = new FormGroup({
+  //   username: new FormControl(''),
+    
+  // });
+  // username = new FormControl('');
+  username!: string;
 
   userService!: UserService;
-  constructor(private router:Router,userService:UserService) { }
+  constructor(private router:Router) { }
+
+  user! : User
+
+  
 
   ngOnInit(): void {
   }
-  getUserData(username: FormControl){
-    // this.userService.getUserData()
-    // this.userService.getRepo()
-    console.log(this.username);
+  getData(){
+    console.log("=====",this.username);
+    // this.userService.getUserData(this.username);
+    // this.userService.getUserData(this.username).then(()=>{
+    //   this.userService.username= this.username 
+    // })
+    // this.userService.getRepo(this.username.value)
+      this.router.navigate(['display']);
+   
   }
-  showUser(){
-    // this.router.navigate(['display']);
-    alert(this.username.value);
-    this.userService.getUserData(this.username)
-    this.userService.getRepo(this.username)
-  }
+  // showUser(){
+  //   // this.router.navigate(['display']);
+  //   alert(this.username.value);
+  //   this.userService.getUserData(this.username)
+  //   this.userService.getRepo(this.username)
+  // }
 
 }

@@ -1,6 +1,6 @@
+import { Repo } from './../repo';
 import { Injectable } from '@angular/core';
 import { User } from '../user';
-import { Repo } from '../repo';
 import { HttpClient } from '@angular/common/http';
 import {environment } from '../../environments/environment';
 import { FormControl } from '@angular/forms';
@@ -10,22 +10,43 @@ import { FormControl } from '@angular/forms';
 })
 export class UserService {
 
-  constructor(private httpClient:HttpClient) { }
-  users!: any;
-  respositories: any[]=[]
-  username!:FormControl
- 
-  
+  user!: User;
+  respository: Repo
+  repositories:any= []
+  UserInfo :any = []; 
+  // username:string="mary-wan";
 
-  getUserData(username:FormControl){
+  constructor(private httpClient:HttpClient) {  
+     this.user = new User("","","","",0,new Date(),new Date());
+     this.respository = new Repo("","","","","",new Date(),new Date())
+   }
 
-    let promise = new Promise<void>((resolve,reject)=>{
-      this.httpClient.get<any>("https://api.github.com/users/"+this.username ).toPromise()
+  getUserData(){
+    // this.repositories.length = 0;
+
+    interface ApiResponse{
+     name: string, 
+      avatar_url: any, 
+      html_url: string, 
+      public_repos: number,
+      created_at: Date,
+      updated_at:Date
+    }
+
+    let promise = new Promise<ApiResponse | void>((resolve,reject)=>{
+      this.httpClient.get<any>("https://api.github.com/users/mary-wan" ).toPromise()
       .then(response=>{
-        // console.log("INFO :",response);
-        resolve((response))
-        console.log("************",this.username.value)
         
+        console.log("INFO********** :",response);
+        this.user.name= response.name;
+        this.user.avatar_url= response.avatar_url;
+        this.user.html_url= response.html_url;
+        this.user.public_repos= response.public_repos;
+        this.user.created_at= response.created_at;
+        this.user.updated_at= response.updated_at;
+        console.log("INFO********** :",this.user.name);
+
+        resolve(response)
       },
       error=>{
        console.log(error.message);
@@ -33,19 +54,18 @@ export class UserService {
 
         reject(error)
       })
-     
-    })
-    return promise
-  }
-  getRepo(username: FormControl){
-
-    let promise = new Promise<void>((resolve,reject)=>{
-      this.httpClient.get<any>("https://api.github.com/users/"+this.username+"/repos" ).toPromise()
+       
+      this.httpClient.get<any>("https://api.github.com/users/mary-wan/repos" ).toPromise()
       .then(response=>{
-
-        resolve((response))
-        this.respositories=response
-        // console.log("REPOS :", this.respositories);
+       
+       
+        for(let i=0; i<response.length; i++)
+	        	{
+	        	
+	        		this.UserInfo = new Repo(response[i].html_url,response[i].clone_url,response[i].name,response[i].description,response[i].created_at,response[i].updated_at,response[i].language);
+	        		this.repositories.push(this.UserInfo);
+	        	}
+            resolve()
       },
       error=>{
        console.log(error.message);
@@ -55,8 +75,31 @@ export class UserService {
       })
      
     })
-    return promise
+    return promise;
   }
-  
+  // getRepo(username:String){
+
+  //   let promise = new Promise<void>((resolve,reject)=>{
+  //     this.httpClient.get<any>("https://api.github.com/users/"+this.username+"/repos" ).toPromise()
+  //     .then(response=>{
+       
+  //       resolve()
+  //       for(var i=0; i<response.length; i++)
+	//         	{
+	        	
+	//         		this.newUserData = new Repo(response[i].html_url,response[i].clone_url,response[i].name,response[i].description,response[i].created_at,response[i].updated_at,response[i].language);
+	//         		this.repositories.push(this.newUserData);
+	//         	}
+  //     },
+  //     error=>{
+  //      console.log(error.message);
+       
+
+  //       reject(error)
+  //     })
+     
+  //   })
+  //   return promise;
+  // }
   
 }
