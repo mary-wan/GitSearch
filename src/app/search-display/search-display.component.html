@@ -10,15 +10,15 @@
       <div class="details mt-1">
         <p>Username: <span>{{user.login}}</span></p>
         <p>Public repositories: <span>{{user.public_repos}}</span></p>
-        <p>Created on : <span>{{user.created_at|date}}</span></p>
+        <p>Joined on : <span>{{user.created_at|date}}</span></p>
         <p>Updated: <span>{{user.updated_at|dateCount}}</span></p>
         <a href="{{user. html_url}}" target="_blank">View in Github</a>
       </div>
     </div>
 
     <div class="col-md-2"></div>
-    <div class="col-lg-4 mt-3 repos">
-      <h1 class="text-center">REPOSITORIES</h1>
+    <div class="col-lg-6 mt-3 repos">
+      <h1 class="p-1">REPOSITORIES</h1>
       <ul *ngFor=" let repo of repository">
         <li>{{repo.name}}</li>
         <span>
@@ -28,10 +28,11 @@
           <p>Languages:{{repo.language}}</p>
         </span>
         <span>
-          <p><i class="fa fa-copy">Clone url: </i>{{repo.clone_url}}</p>
+          <i class="fa fa-copy">Clone url: </i><a href="{{repo.clone_url}}" target="_blank">{{repo.clone_url}}</a>
         </span>
         <span>
-          <p>Created on: {{repo.created_at|date}}</p>
+          <p>Created on: {{repo.created_at|date}} | Last Updated : {{repo.updated_at|dateCount}}</p>
+          <!-- <p>Updated : {{repo.updated_at|dateCount}}</p> -->
         </span>
         <span><a href="{{repo.html_url}}" target="_blank">View in Github</a></span>
 

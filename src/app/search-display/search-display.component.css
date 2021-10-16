@@ -22,7 +22,7 @@ ul li{
 }
 .name{
     margin: 0px !important;
-    padding-left: 60%;
+    padding-left: 50%;
     font-family: 'Ubuntu', sans-serif;
     color: #1CAF9A;
     font-size: 18px;
@@ -33,6 +33,7 @@ a{
 }
 a:hover{
     text-decoration: underline;
+    color: purple;
 }
 img{
     border: solid 2px;
