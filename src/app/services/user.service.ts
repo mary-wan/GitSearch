@@ -15,7 +15,8 @@ export class UserService {
   respository: Repo
   repositories:any= []
   UserInfo :any = []; 
-  url= environment.apiUrl
+  url= environment.apiUrl;
+  apiKey =environment.apiKey
   username:string="mary-wan";
   clientId = environment.clientid
   clientSecret = environment.clientsecret;
@@ -39,7 +40,7 @@ export class UserService {
     }
 
     let promise = new Promise<ApiResponse | void>((resolve,reject)=>{
-      this.httpClient.get<any>(this.url + username + '?client_id' + this.clientId + '&client_secret=' + this.clientSecret).toPromise()
+      this.httpClient.get<any>(this.url + username + this.apiKey).toPromise()
       .then(response=>{
         
         // console.log("INFO********** :",response);
