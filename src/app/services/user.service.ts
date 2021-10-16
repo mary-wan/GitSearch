@@ -42,6 +42,7 @@ export class UserService {
       .then(response=>{
           
         this.user.name= response.name;
+        this.user.login= response.login;
         this.user.avatar_url= response.avatar_url;
         this.user.html_url= response.html_url;
         this.user.public_repos= response.public_repos;
