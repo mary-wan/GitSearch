@@ -14,19 +14,21 @@ import { Router } from '@angular/router';
 export class SearchDisplayComponent implements OnInit {
   user!: User;
   repository:any=[];
+  // repository:Repo[]=[];
   // userService!:UserService
   username!:string
+  userService! :UserService
 
-
-  constructor(private userService:UserService,private router:Router) { 
-    this.userService=userService
+  constructor(private GitUserService:UserService,private router:Router) { 
+    this.userService=GitUserService
   }
 
   ngOnInit(): void {
     this.userService.getUserData(this.username)
     this.user = this.userService.user; 
-    this.userService.getRepo(this.username)
-    this.repository = this.userService.repositories
+    
+    this.userService.getRepo(this.username);
+    this.repository = this.userService.repositories;
 
   }
   back(){

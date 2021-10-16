@@ -1,17 +1,23 @@
-form{
-    background-image: url("src/assets/form.jpg");
-    background-attachment: fixed;
-    background-size: cover;  
-    border:  solid 2px;
-    border-radius: 10px;
-    padding: 2%;
+form {
+  background-image: url("src/assets/form.jpg");
+  background-attachment: fixed;
+  background-size: cover;
+  border: solid 2px;
+  border-radius: 10px;
+  padding: 2%;
 }
 
-.btn{
-    margin-left: 10%;
-    margin-bottom: 10px;
-    margin-top: 20px;
-    background-color: #4e1a3d !important;
-    color: white;
-    width: 70%;
+.btn {
+  margin-left: 10%;
+  margin-bottom: 10px;
+  margin-top: 20px;
+  background-color: #4e1a3d !important;
+  color: white;
+  width: 70%;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

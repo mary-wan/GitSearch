@@ -12,7 +12,7 @@ import { map } from 'rxjs/operators';
 export class UserService {
 
   user!: User;
-  respository: Repo
+  repository: Repo
   repositories:any= []
   UserInfo :any = []; 
   url= environment.apiUrl;
@@ -21,10 +21,11 @@ export class UserService {
 
   constructor(private httpClient:HttpClient) {  
      this.user = new User("","","","",0,new Date(),new Date());
-     this.respository = new Repo("","","","","",new Date(),new Date())
+     this.repository = new Repo("","","","","",new Date(),new Date())
    }
 
   getUserData(username:string){
+    this.repositories.length = 0;
 
     interface ApiResponse{
      name: string, 
@@ -47,7 +48,7 @@ export class UserService {
         this.user.created_at= response.created_at;
         this.user.updated_at= response.updated_at;
 
-        resolve(response)
+        resolve()
       },
       error=>{
        console.log(error.message);
@@ -55,7 +56,7 @@ export class UserService {
         reject(error)
       })
        
-      // this.httpClient.get<any>("https://api.github.com/users/mary-wan/repos" ).toPromise()
+      // this.httpClient.get<any>(this.url+username+"/repos"+this.apiKey ).toPromise()
       // .then(response=>{
        
        
@@ -80,10 +81,13 @@ export class UserService {
   getRepo(username:String){
 
     let promise = new Promise<void>((resolve,reject)=>{
-      this.httpClient.get<any>("https://api.github.com/users/"+username+"/repos" ).toPromise()
+      this.httpClient.get<any>(this.url+username+"/repos"+this.apiKey ).toPromise()
       .then(response=>{
+          console.log("&&&&&&&&&&&&",response);
+          
+        this.repository= response
        
-        resolve()
+        resolve(response)
         for(var i=0; i<response.length; i++)
 	        	{
 	        	
