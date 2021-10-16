@@ -17,9 +17,7 @@ export class UserService {
   UserInfo :any = []; 
   url= environment.apiUrl;
   apiKey =environment.apiKey
-  username:string="mary-wan";
-  clientId = environment.clientid
-  clientSecret = environment.clientsecret;
+
 
   constructor(private httpClient:HttpClient) {  
      this.user = new User("","","","",0,new Date(),new Date());
@@ -27,8 +25,6 @@ export class UserService {
    }
 
   getUserData(username:string){
-    username ="mary-wan";
-    // this.repositories.length = 0;
 
     interface ApiResponse{
      name: string, 
@@ -42,22 +38,19 @@ export class UserService {
     let promise = new Promise<ApiResponse | void>((resolve,reject)=>{
       this.httpClient.get<any>(this.url + username + this.apiKey).toPromise()
       .then(response=>{
-        
-        // console.log("INFO********** :",response);
+          
         this.user.name= response.name;
         this.user.avatar_url= response.avatar_url;
         this.user.html_url= response.html_url;
         this.user.public_repos= response.public_repos;
         this.user.created_at= response.created_at;
         this.user.updated_at= response.updated_at;
-        // console.log("INFO********** :",this.user.name);
 
         resolve(response)
       },
       error=>{
        console.log(error.message);
        
-
         reject(error)
       })
        

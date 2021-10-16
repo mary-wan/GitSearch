@@ -12,38 +12,25 @@ import { Router } from '@angular/router';
 })
 export class SearchFormComponent implements OnInit {
 
-  // gitForm = new FormGroup({
-  //   username: new FormControl(''),
-    
-  // });
-  // username = new FormControl('');
+
   username!: string;
 
   userService!: UserService;
-  constructor(private router:Router) { }
+  constructor(private router:Router,private GitUserService:UserService) {
+    this.userService=GitUserService
+   }
 
-  user! : User
-
-  
 
   ngOnInit(): void {
     
   }
-  getData(){
+  getUsername(){
     console.log("=====",this.username);
-    // this.userService.getUserData(this.username);
-    // this.userService.getUserData(this.username).then(()=>{
-    //   this.userService.username= this.username 
-    // })
-    // this.userService.getRepo(this.username.value)
+    this.userService.getUserData(this.username);
+ 
       this.router.navigate(['display']);
    
   }
-  // showUser(){
-  //   // this.router.navigate(['display']);
-  //   alert(this.username.value);
-  //   this.userService.getUserData(this.username)
-  //   this.userService.getRepo(this.username)
-  // }
+ 
 
 }
