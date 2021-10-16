@@ -13,15 +13,19 @@ export class UserService {
   constructor(private httpClient:HttpClient) { }
   users!: any;
   respositories: any[]=[]
-  username = new FormControl('');
+  username!:FormControl
+ 
+  
 
-  getUserData(){
+  getUserData(username:FormControl){
 
     let promise = new Promise<void>((resolve,reject)=>{
-      this.httpClient.get<any>("https://api.github.com/users/mary-wan" ).toPromise()
+      this.httpClient.get<any>("https://api.github.com/users/"+this.username ).toPromise()
       .then(response=>{
-        console.log("INFO :",response);
+        // console.log("INFO :",response);
         resolve((response))
+        console.log("************",this.username.value)
+        
       },
       error=>{
        console.log(error.message);
@@ -33,15 +37,15 @@ export class UserService {
     })
     return promise
   }
-  getRepo(){
+  getRepo(username: FormControl){
 
     let promise = new Promise<void>((resolve,reject)=>{
-      this.httpClient.get<any>("https://api.github.com/users/mary-wan/repos" ).toPromise()
+      this.httpClient.get<any>("https://api.github.com/users/"+this.username+"/repos" ).toPromise()
       .then(response=>{
 
         resolve((response))
         this.respositories=response
-        console.log("REPOS :", this.respositories);
+        // console.log("REPOS :", this.respositories);
       },
       error=>{
        console.log(error.message);

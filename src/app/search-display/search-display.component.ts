@@ -1,3 +1,4 @@
+import { FormControl } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { User } from './../user';
 import { Repo } from '../repo';
@@ -13,17 +14,18 @@ import { Router } from '@angular/router';
 export class SearchDisplayComponent implements OnInit {
   user!: any;
   repository:any=[]
-  // repository!:any
+  username!:FormControl
+
   constructor(private userService:UserService,private router:Router) { }
 
   ngOnInit(): void {
-    this.userService.getUserData().then((users)=>{
-      console.log("..........",users);
+    this.userService.getUserData(this.username).then((users)=>{
+      // console.log("..........",users);
       this.user = users
     })
-    this.userService.getRepo().then((repository)=>{
+    this.userService.getRepo(this.username).then((repository)=>{
       this.repository = repository
-      console.log(">>>>>>>>>>>",repository);
+      // console.log(">>>>>>>>>>>",repository);
     })
   }
   back(){
