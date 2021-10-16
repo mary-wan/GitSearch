@@ -4,6 +4,7 @@ import { User } from '../user';
 import { HttpClient } from '@angular/common/http';
 import {environment } from '../../environments/environment';
 import { FormControl } from '@angular/forms';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -14,14 +15,18 @@ export class UserService {
   respository: Repo
   repositories:any= []
   UserInfo :any = []; 
-  // username:string="mary-wan";
+  url= environment.apiUrl
+  username:string="mary-wan";
+  clientId = environment.clientid
+  clientSecret = environment.clientsecret;
 
   constructor(private httpClient:HttpClient) {  
      this.user = new User("","","","",0,new Date(),new Date());
      this.respository = new Repo("","","","","",new Date(),new Date())
    }
 
-  getUserData(){
+  getUserData(username:string){
+    username ="mary-wan";
     // this.repositories.length = 0;
 
     interface ApiResponse{
@@ -34,17 +39,17 @@ export class UserService {
     }
 
     let promise = new Promise<ApiResponse | void>((resolve,reject)=>{
-      this.httpClient.get<any>("https://api.github.com/users/mary-wan" ).toPromise()
+      this.httpClient.get<any>(this.url + username + '?client_id' + this.clientId + '&client_secret=' + this.clientSecret).toPromise()
       .then(response=>{
         
-        console.log("INFO********** :",response);
+        // console.log("INFO********** :",response);
         this.user.name= response.name;
         this.user.avatar_url= response.avatar_url;
         this.user.html_url= response.html_url;
         this.user.public_repos= response.public_repos;
         this.user.created_at= response.created_at;
         this.user.updated_at= response.updated_at;
-        console.log("INFO********** :",this.user.name);
+        // console.log("INFO********** :",this.user.name);
 
         resolve(response)
       },

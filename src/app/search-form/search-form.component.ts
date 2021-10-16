@@ -27,6 +27,7 @@ export class SearchFormComponent implements OnInit {
   
 
   ngOnInit(): void {
+    
   }
   getData(){
     console.log("=====",this.username);

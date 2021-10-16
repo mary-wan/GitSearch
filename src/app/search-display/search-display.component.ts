@@ -15,7 +15,7 @@ export class SearchDisplayComponent implements OnInit {
   user!: User;
   repository:any=[];
   // userService!:UserService
-  username!:String
+  username!:any
 
 
   constructor(private userService:UserService,private router:Router) { 
@@ -23,7 +23,7 @@ export class SearchDisplayComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.userService.getUserData()
+    this.userService.getUserData(this.username)
     this.user = this.userService.user; 
     this.repository = this.userService.repositories
 
