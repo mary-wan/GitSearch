@@ -92,7 +92,7 @@ export class UserService {
         for(var i=0; i<response.length; i++)
 	        	{
 	        	
-              this.UserInfo = new Repo(response[i].html_url,response[i].clone_url,response[i].name,response[i].description,response[i].created_at,response[i].updated_at,response[i].language);
+              this.UserInfo = new Repo(response[i].html_url,response[i].clone_url,response[i].name,response[i].description,response[i].language,response[i].created_at,response[i].updated_at);
 	        		this.repositories.push(this.UserInfo);
 	        	}
       },

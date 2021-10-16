@@ -1,6 +1,6 @@
 import { UserService } from './../services/user.service';
 import { FormControl } from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,OnDestroy } from '@angular/core';
 import { User } from './../user';
 import { Repo } from '../repo';
 import { Router } from '@angular/router';
