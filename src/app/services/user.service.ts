@@ -1,7 +1,7 @@
 import { Repo } from './../repo';
 import { Injectable } from '@angular/core';
 import { User } from '../user';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {environment } from '../../environments/environment';
 import { Router } from '@angular/router';
 
@@ -15,15 +15,18 @@ export class UserService {
   repositories:any= []
   UserInfo :any = []; 
   url= environment.apiUrl;
-  apiKey =environment.apiKey
-
+  apiKey =environment.apiKey;
+  // private headers= new HttpHeaders()
 
   constructor(private httpClient:HttpClient,private router:Router) {  
      this.user = new User("","","","",0,new Date(),new Date());
      this.repository = new Repo("","","","","",new Date(),new Date())
+    //  this.headers= this.headers.set('Bearer', this.apiKey)
    }
 
+   
   getUserData(username:string){
+    
     this.repositories.length = 0;
 
     interface ApiResponse{
@@ -78,10 +81,10 @@ export class UserService {
       error=>{
        console.log("^^^^^^^^^^^^^^^^^",error);
 
-       if(error.status = "404"){
-        this.router.navigate(['search'])
-         alert("Username not found. Please try again");
-       }
+      //  if(error.status = "404"){
+      //   this.router.navigate(['search'])
+      //    alert("Username not found. Please try again");
+      //  }
        
 
         reject(error)

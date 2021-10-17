@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
 })
 export class SearchDisplayComponent implements OnInit {
   user!: User;
+  isComplete = true;
   // repository:any=[];
  
   repository:Repo[]=[];
@@ -34,7 +35,6 @@ export class SearchDisplayComponent implements OnInit {
     
     this.userService.getRepo(this.username);
     this.repository = this.userService.repositories;
-   
 
   }
   
