@@ -3,8 +3,7 @@ import { Injectable } from '@angular/core';
 import { User } from '../user';
 import { HttpClient } from '@angular/common/http';
 import {environment } from '../../environments/environment';
-import { FormControl } from '@angular/forms';
-import { map } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +18,7 @@ export class UserService {
   apiKey =environment.apiKey
 
 
-  constructor(private httpClient:HttpClient) {  
+  constructor(private httpClient:HttpClient,private router:Router) {  
      this.user = new User("","","","",0,new Date(),new Date());
      this.repository = new Repo("","","","","",new Date(),new Date())
    }
@@ -37,7 +36,6 @@ export class UserService {
     }
 
     let promise = new Promise<ApiResponse | void>((resolve,reject)=>{
-      // this.httpClient.get<any>(this.url + username + this.apiKey).toPromise()
       this.httpClient.get<any>(this.url + username + this.apiKey).toPromise()
       .then(response=>{
           
@@ -56,36 +54,17 @@ export class UserService {
        
         reject(error)
       })
-       
-      // this.httpClient.get<any>(this.url+username+"/repos"+this.apiKey ).toPromise()
-      // .then(response=>{
-       
-       
-      //   for(let i=0; i<response.length; i++)
-	    //     	{
-	        	
-	    //     		this.UserInfo = new Repo(response[i].html_url,response[i].clone_url,response[i].name,response[i].description,response[i].created_at,response[i].updated_at,response[i].language);
-	    //     		this.repositories.push(this.UserInfo);
-	    //     	}
-      //       resolve()
-      // },
-      // error=>{
-      //  console.log(error.message);
-       
-
-      //   reject(error)
-      // })
-     
+ 
     })
     return promise;
   }
   getRepo(username:String){
 
     let promise = new Promise<void>((resolve,reject)=>{
-      this.httpClient.get<any>(this.url+username+"/repos"+this.apiKey ).toPromise()
+      this.httpClient.get<any>(this.url+username+"/repos"+this.apiKey ).toPromise()        
       .then(response=>{
           console.log("&&&&&&&&&&&&",response);
-          
+
         this.repository= response
        
         resolve(response)
@@ -97,7 +76,12 @@ export class UserService {
 	        	}
       },
       error=>{
-       console.log(error.message);
+       console.log("^^^^^^^^^^^^^^^^^",error);
+
+       if(error.status = "404"){
+        this.router.navigate(['search'])
+         alert("Username not found. Please try again");
+       }
        
 
         reject(error)

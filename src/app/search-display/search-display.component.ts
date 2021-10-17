@@ -1,6 +1,6 @@
 import { UserService } from './../services/user.service';
 import { FormControl } from '@angular/forms';
-import { Component, OnInit,OnDestroy } from '@angular/core';
+import { Component, OnInit,OnDestroy, OnChanges, SimpleChanges } from '@angular/core';
 import { User } from './../user';
 import { Repo } from '../repo';
 import { Router } from '@angular/router';
@@ -13,24 +13,38 @@ import { Router } from '@angular/router';
 })
 export class SearchDisplayComponent implements OnInit {
   user!: User;
-  repository:any=[];
-  // repository:Repo[]=[];
+  // repository:any=[];
+ 
+  repository:Repo[]=[];
   // userService!:UserService
   username!:string
   userService! :UserService
 
   constructor(private GitUserService:UserService,private router:Router) { 
     this.userService=GitUserService
+    
+
   }
 
+ 
   ngOnInit(): void {
+
     this.userService.getUserData(this.username)
     this.user = this.userService.user; 
     
     this.userService.getRepo(this.username);
     this.repository = this.userService.repositories;
+   
 
   }
+  
+  // ngOnDestroy(): void {
+  //   this.router.navigate(['search'])
+  // .then(() => {
+  //   window.location.reload();
+  // });
+  // }
+
   back(){
     this.router.navigate(['search']);
   }
