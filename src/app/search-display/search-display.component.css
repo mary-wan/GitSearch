@@ -31,10 +31,6 @@ a{
     text-decoration: none;
     border-color:#4e1a3d ;
 }
-a:hover{
-    text-decoration: underline;
-    color: purple;
-}
 img{
     border: solid 2px;
 }

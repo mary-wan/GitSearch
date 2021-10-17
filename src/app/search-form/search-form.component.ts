@@ -12,14 +12,12 @@ import { Router } from '@angular/router';
 })
 export class SearchFormComponent implements OnInit {
 
-
   username!: string;
-
   userService!: UserService;
+
   constructor(private router:Router,private GitUserService:UserService) {
     this.userService=GitUserService
    }
-
 
   ngOnInit(): void {
     
@@ -33,5 +31,4 @@ export class SearchFormComponent implements OnInit {
    
   }
  
-
 }

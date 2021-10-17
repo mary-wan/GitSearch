@@ -26,9 +26,11 @@ export class UserService {
 
    
   getUserData(username:string){
-    
+    // const headers = new Headers({
+    //   'Content-Type': 'application/json',
+    //   'Authorization': `Bearer ${this.apiKey}`
+    // })
     this.repositories.length = 0;
-
     interface ApiResponse{
      name: string, 
       avatar_url: any, 

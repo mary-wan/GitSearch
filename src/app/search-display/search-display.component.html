@@ -3,19 +3,17 @@
     <span class="sr-only">Loading...</span>
   </div>
   <div class="row">
-
     <div class="fixed col-lg-4 m-2" style="width: 18rem;">
       <button class="btn btn-success" (click)="back()"><i class="fa fa-arrow-left"></i> BACK</button>
       <hr>
       <p class="name">{{user.name}}</p>
       <img class="card-img-top" src="{{user.avatar_url}}" alt="Card image cap" height="200">
-
       <div class="details mt-1">
         <p>Username: <span>{{user.login}}</span></p>
         <p>Public repositories: <span>{{user.public_repos}}</span></p>
         <p>Joined on : <span>{{user.created_at|date}}</span></p>
         <p>Updated: <span>{{user.updated_at|dateCount}}</span></p>
-        <a href="{{user. html_url}}" target="_blank">View in Github</a>
+        <a href="{{user. html_url}}" target="_blank" appHighlighting>View in Github</a>
       </div>
     </div>
 
@@ -31,12 +29,13 @@
           <p>Languages:{{repo.language}}</p>
         </span>
         <span>
-          <i class="fa fa-copy">Clone url: </i><a href="{{repo.clone_url}}" target="_blank">{{repo.clone_url}}</a>
+          <i class="fa fa-copy">Clone url: </i><a href="{{repo.clone_url}}" target="_blank"
+            appHighlighting>{{repo.clone_url}} </a>
         </span>
         <span>
           <p>Created on: {{repo.created_at|date}} | Last Updated : {{repo.updated_at|dateCount}}</p>
         </span>
-        <span><a href="{{repo.html_url}}" target="_blank">View in Github</a></span>
+        <span><a href="{{repo.html_url}}" target="_blank" appHighlighting>View in Github</a></span>
 
       </ul>
     </div>

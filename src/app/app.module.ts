@@ -11,6 +11,7 @@ import { GitRoutingModule } from './git-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DateCountPipe } from './date-count.pipe';
+import { HighlightingDirective } from './highlighting.directive';
 
 
 
@@ -22,6 +23,7 @@ import { DateCountPipe } from './date-count.pipe';
     SearchFormComponent,
     SearchDisplayComponent,
     DateCountPipe,
+    HighlightingDirective,
 
   ],
   imports: [

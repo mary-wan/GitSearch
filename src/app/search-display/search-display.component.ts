@@ -14,37 +14,22 @@ import { Router } from '@angular/router';
 export class SearchDisplayComponent implements OnInit {
   user!: User;
   isComplete = true;
-  // repository:any=[];
- 
   repository:Repo[]=[];
-  // userService!:UserService
   username!:string
   userService! :UserService
 
   constructor(private GitUserService:UserService,private router:Router) { 
-    this.userService=GitUserService
-    
+    this.userService=GitUserService  
 
   }
 
- 
   ngOnInit(): void {
-
     this.userService.getUserData(this.username)
     this.user = this.userService.user; 
     
     this.userService.getRepo(this.username);
     this.repository = this.userService.repositories;
-
   }
-  
-  // ngOnDestroy(): void {
-  //   this.router.navigate(['search'])
-  // .then(() => {
-  //   window.location.reload();
-  // });
-  // }
-
   back(){
     this.router.navigate(['search']);
   }

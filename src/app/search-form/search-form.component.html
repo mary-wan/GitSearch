@@ -1,20 +1,22 @@
 <h1 class="text-center mt-3">SEARCH FOR GITHUB USERS AND REPOSITORIES </h1>
 <div class="container mt-5">
-  
+
   <div class="col-md-5">
-    <form (submit)="getUsername()" #gitSearch = "ngForm" >
+    <form (submit)="getUsername()" #gitSearch="ngForm">
       <p class="text-center text-danger pt-1">Please Fill In Username To Search</p>
       <div class="form-group row">
-        <label for="username" class=" col-form-label text-center"><img src="assets/logo.png" alt="" height="70" width="200"> </label>
+        <label for="username" class=" col-form-label text-center"><img src="assets/logo.png" alt="" height="70"
+            width="200"> </label>
         <div class="mt-3">
-          <input type="text" autocomplete="off" class="form-control" id="username" name = "username" placeholder="Enter github username..." [(ngModel)]="username" #name='ngModel' required>
+          <input type="text" autocomplete="off" class="form-control" id="username" name="username"
+            placeholder="Enter github username..." [(ngModel)]="username" #name='ngModel' required>
           <div [hidden]="name.valid || name.pristine" class="alert-danger">
             <p>Name is required</p>
           </div>
           <button class="btn" [disabled]="gitSearch.invalid"> SEARCH USER</button>
         </div>
       </div>
-      
+
     </form>
   </div>
 </div>
