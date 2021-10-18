@@ -41,7 +41,7 @@ export class UserService {
     }
 
     let promise = new Promise<ApiResponse | void>((resolve,reject)=>{
-      this.httpClient.get<any>(this.url + username + this.apiKey).toPromise()
+      this.httpClient.get<any>(this.url + username,{headers: new HttpHeaders({'Authorization': 'token ' + environment.apiKey})}).toPromise()
       .then(response=>{
           
         this.user.name= response.name;
@@ -66,7 +66,7 @@ export class UserService {
   getRepo(username:String){
 
     let promise = new Promise<void>((resolve,reject)=>{
-      this.httpClient.get<any>(this.url+username+"/repos"+this.apiKey ).toPromise()        
+      this.httpClient.get<any>(this.url + username +"/repos",{headers: new HttpHeaders({'Authorization': 'token ' + environment.apiKey})} ).toPromise()        
       .then(response=>{
         console.log("&&&&&&&&&&&&",response);
         this.repository= response
