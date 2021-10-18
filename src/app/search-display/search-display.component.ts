@@ -1,9 +1,9 @@
 import { UserService } from './../services/user.service';
-import { FormControl } from '@angular/forms';
-import { Component, OnInit,OnDestroy, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { User } from './../user';
 import { Repo } from '../repo';
 import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 
 @Component({
@@ -18,9 +18,8 @@ export class SearchDisplayComponent implements OnInit {
   username!:string
   userService! :UserService
 
-  constructor(private GitUserService:UserService,private router:Router) { 
+  constructor(private GitUserService:UserService,private router:Router,private location:Location) { 
     this.userService=GitUserService  
-
   }
 
   ngOnInit(): void {
@@ -33,5 +32,7 @@ export class SearchDisplayComponent implements OnInit {
   back(){
     this.router.navigate(['search']);
   }
+
+
 
 }

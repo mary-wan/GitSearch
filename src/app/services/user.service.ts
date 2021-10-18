@@ -16,7 +16,7 @@ export class UserService {
   UserInfo :any = []; 
   url= environment.apiUrl;
   apiKey =environment.apiKey;
-  // private headers= new HttpHeaders()
+  // private headers= new HttpHeaders().set('Bearer', this.apiKey)
 
   constructor(private httpClient:HttpClient,private router:Router) {  
      this.user = new User("","","","",0,new Date(),new Date());
@@ -68,8 +68,7 @@ export class UserService {
     let promise = new Promise<void>((resolve,reject)=>{
       this.httpClient.get<any>(this.url+username+"/repos"+this.apiKey ).toPromise()        
       .then(response=>{
-          console.log("&&&&&&&&&&&&",response);
-
+        console.log("&&&&&&&&&&&&",response);
         this.repository= response
        
         resolve(response)
@@ -82,12 +81,6 @@ export class UserService {
       },
       error=>{
        console.log("^^^^^^^^^^^^^^^^^",error);
-
-      //  if(error.status = "404"){
-      //   this.router.navigate(['search'])
-      //    alert("Username not found. Please try again");
-      //  }
-       
 
         reject(error)
       })

@@ -12,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DateCountPipe } from './date-count.pipe';
 import { HighlightingDirective } from './highlighting.directive';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 
 
@@ -24,6 +25,7 @@ import { HighlightingDirective } from './highlighting.directive';
     SearchDisplayComponent,
     DateCountPipe,
     HighlightingDirective,
+    NotFoundComponent,
 
   ],
   imports: [
