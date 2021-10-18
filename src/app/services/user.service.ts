@@ -2,7 +2,7 @@ import { Repo } from './../repo';
 import { Injectable } from '@angular/core';
 import { User } from '../user';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import {environment } from '../../environments/environment';
+import {environment } from './../environments/environment';
 import { Router } from '@angular/router';
 
 @Injectable({
@@ -16,6 +16,7 @@ export class UserService {
   UserInfo :any = []; 
   url= environment.apiUrl;
   apiKey =environment.apiKey;
+
   // private headers= new HttpHeaders().set('Bearer', this.apiKey)
 
   constructor(private httpClient:HttpClient,private router:Router) {  
@@ -45,6 +46,7 @@ export class UserService {
       }).toPromise()
       .then(response=>{
        
+        console.log("=====",username);
         this.user.name= response.name;
         this.user.login= response.login;
         this.user.avatar_url= response.avatar_url;
@@ -62,9 +64,11 @@ export class UserService {
       })
  
     })
+    
     return promise;
   }
   getRepo(username:String){
+     console.log("=====",username);
 
     let promise = new Promise<void>((resolve,reject)=>{
       this.httpClient.get < any > (this.url + username + "/repos", {

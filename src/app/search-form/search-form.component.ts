@@ -3,6 +3,7 @@ import { UserService } from './../services/user.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl , FormGroup} from '@angular/forms';
 import { Router } from '@angular/router';
+import { Repo } from '../repo';
 
 
 @Component({
@@ -12,6 +13,7 @@ import { Router } from '@angular/router';
 })
 export class SearchFormComponent implements OnInit {
 
+  User!:User 
   username!: string;
   userService!: UserService;
 
@@ -23,11 +25,11 @@ export class SearchFormComponent implements OnInit {
     
   }
   getUsername(){
-    console.log("=====",this.username);
+    // console.log("=====",this.username);
     this.userService.getUserData(this.username);
     this.userService.getRepo(this.username);
- 
-      this.router.navigate(['display']);
+    this.User = this.userService.user;
+    this.router.navigate(['display']);
    
   }
  
