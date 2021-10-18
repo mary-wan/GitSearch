@@ -16,14 +16,14 @@ export class UserService {
   UserInfo :any = []; 
   url= environment.apiUrl;
   apiKey =environment.apiKey;
-  // private headers= new HttpHeaders()
+  // private headers= new HttpHeaders().set('Bearer', this.apiKey)
 
   constructor(private httpClient:HttpClient,private router:Router) {  
      this.user = new User("","","","",0,new Date(),new Date());
      this.repository = new Repo("","","","","",new Date(),new Date())
-    //  headers = new Headers({
-      // 'Permissions-Policy': 'interest-cohort=()',
-      // 'Authorization': `Bearer ${this.apiKey}`
+    // const headers = new Headers({
+    //   'Content-Type': 'application/json',
+    //   'Authorization': `Bearer ${this.apiKey}`
     // })
    }
 
@@ -44,9 +44,14 @@ export class UserService {
     }
 
     let promise = new Promise<ApiResponse | void>((resolve,reject)=>{
-      this.httpClient.get<any>(this.url + username,{headers: new HttpHeaders({'Authorization': 'Bearer ' + environment.apiKey,'Permissions-Policy': 'interest-cohort=()'})}).toPromise()
+      this.httpClient.get < any > (this.url + username, {
+        headers: new HttpHeaders({
+          'Authorization': 'Bearer ' + environment.apiKey,
+
+        })
+      }).toPromise()
       .then(response=>{
-          
+       
         this.user.name= response.name;
         this.user.login= response.login;
         this.user.avatar_url= response.avatar_url;
@@ -69,7 +74,11 @@ export class UserService {
   getRepo(username:String){
 
     let promise = new Promise<void>((resolve,reject)=>{
-      this.httpClient.get<any>(this.url + username +"/repos",{headers: new HttpHeaders({'Authorization': 'Bearer ' + environment.apiKey,'Permissions-Policy': 'interest-cohort=()'})} ).toPromise()        
+      this.httpClient.get < any > (this.url + username + "/repos", {
+        headers: new HttpHeaders({
+          'Authorization': 'Bearer ' + environment.apiKey
+        })
+      }).toPromise()
       .then(response=>{
         console.log("&&&&&&&&&&&&",response);
         this.repository= response
