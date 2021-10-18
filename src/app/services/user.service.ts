@@ -21,18 +21,11 @@ export class UserService {
   constructor(private httpClient:HttpClient,private router:Router) {  
      this.user = new User("","","","",0,new Date(),new Date());
      this.repository = new Repo("","","","","",new Date(),new Date())
-    // const headers = new Headers({
-    //   'Content-Type': 'application/json',
-    //   'Authorization': `Bearer ${this.apiKey}`
-    // })
    }
 
    
   getUserData(username:string){
-    // const headers = new Headers({
-    //   'Content-Type': 'application/json',
-    //   'Authorization': `Bearer ${this.apiKey}`
-    // })
+
     this.repositories.length = 0;
     interface ApiResponse{
      name: string, 
