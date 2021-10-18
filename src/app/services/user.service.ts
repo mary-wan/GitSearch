@@ -41,7 +41,7 @@ export class UserService {
     }
 
     let promise = new Promise<ApiResponse | void>((resolve,reject)=>{
-      this.httpClient.get<any>(this.url + username,{headers: new HttpHeaders({'Authorization': 'token ' + environment.apiKey})}).toPromise()
+      this.httpClient.get<any>(this.url + username,{headers: new HttpHeaders({'Authorization': 'Bearer ' + environment.apiKey})}).toPromise()
       .then(response=>{
           
         this.user.name= response.name;
