@@ -15,7 +15,7 @@ export class UserService {
   repositories:any= []
   UserInfo :any = []; 
   url= environment.apiUrl;
-  apiKey =environment.apiKey;
+  apiKey =environment.ApiKey;
 
   // private headers= new HttpHeaders().set('Bearer', this.apiKey)
 
@@ -40,7 +40,7 @@ export class UserService {
     let promise = new Promise<ApiResponse | void>((resolve,reject)=>{
       this.httpClient.get < any > (this.url + username, {
         headers: new HttpHeaders({
-          'Authorization': 'Bearer ' + environment.apiKey,
+          'Authorization': 'Bearer ' + this.apiKey,
 
         })
       }).toPromise()
@@ -73,7 +73,7 @@ export class UserService {
     let promise = new Promise<void>((resolve,reject)=>{
       this.httpClient.get < any > (this.url + username + "/repos", {
         headers: new HttpHeaders({
-          'Authorization': 'Bearer ' + environment.apiKey
+          'Authorization': 'Bearer ' + this.apiKey
         })
       }).toPromise()
       .then(response=>{
